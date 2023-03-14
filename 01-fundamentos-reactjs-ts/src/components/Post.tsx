@@ -1,9 +1,25 @@
 import { Comment } from './Comment';
 import { Avatar } from './Avatar';
 import styles from './Post.module.css';
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 
-export function Post(props) {
+interface IAuthor {
+    name: string;
+    role: string;
+    avatarUrl: string;
+}
+
+interface IContent {
+    type: 'paragraph' | 'link';
+    content: string;
+}
+
+interface IPostProps {
+    author: IAuthor;
+    content: IContent[];
+}
+
+export function Post({ author, content }: IPostProps) {
 
     const [comments, setComments] = useState([
         'Post Bacana, hein?!'
@@ -15,34 +31,35 @@ export function Post(props) {
 
 
 
-    function handleCreateNewComment(e) {
+    function handleCreateNewComment(e: FormEvent) {
         e.preventDefault();
 
         setComments([...comments, newCommentText]);
         setNewCommentText('')
     }
 
-    function handleUpdateComment(e) {
+    function handleUpdateComment(e: ChangeEvent<HTMLTextAreaElement>) {
         e.target.setCustomValidity('')
         setNewCommentText(e.target.value)
 
     }
-    
+
+    function handleNewCommentInvalid(e: InvalidEvent<HTMLTextAreaElement>) {
+        e.target.setCustomValidity('Error')
+    };
+
     // Utilizando o filter() ele irá pegar o state antigo 'comments'
     // para filtrar o comentário que queremos retirar.
     // Se ele retprmar true vai manter na lista. False vai retirar da lista.
     // Vai manter todos comentários que são diferentes do passado para a função, no caso o valor do 'commentToDelete'
-    function deleteComment(commentToDelete) {
+    function deleteComment(commentToDelete: string) {
         const newComments = comments.filter(comment => {
-            return comment !== commentToDelete; 
+            return comment !== commentToDelete;
         })
 
         setComments(newComments);
     }
 
-    function handleNewCommentInvalid(e) {
-        e.target.setCustomValidity('Error')
-    };
 
     const isNewCommentEmpty = newCommentText.length === 0;
 
@@ -50,10 +67,10 @@ export function Post(props) {
         <article className={styles.post}>
             <header>
                 <div className={styles.author}>
-                    <Avatar src={props.author.avatarUrl} />
+                    <Avatar src={author.avatarUrl} />
                     <div className={styles.authorInfo}>
-                        <strong>{props.author.name}</strong>
-                        <span>{props.author.role}</span>
+                        <strong>{author.name}</strong>
+                        <span>{author.role}</span>
                     </div>
                 </div>
 
@@ -64,11 +81,11 @@ export function Post(props) {
 
 
             <div className={styles.content}>
-                {props.content.map(c => {
-                    if (c.type === 'paragraph') {
-                        return <p key={c.content}>{c.content}</p>
-                    } else if (c.type === 'link') {
-                        return <p key={c.content}><a href='#' >{c.content}</a></p>
+                {content.map(line => {
+                    if (line.type === 'paragraph') {
+                        return <p key={line.content}>{line.content}</p>
+                    } else if (line.type === 'link') {
+                        return <p key={line.content}><a href='#' >{line.content}</a></p>
                     }
 
                 })}
