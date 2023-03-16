@@ -1,12 +1,12 @@
 import React from 'react'
-import { Header } from './components/header'
+import { Header } from './components/Header'
 import { Sidebar } from './components/Sidebar'
-import { Post } from './components/Post'
+import { Post, IPost } from './components/Post'
 import styles from './App.module.css'
 
 import './global.css'
 
-const posts = [
+const posts: IPost[] = [
   {
     id: 1,
     author: {
@@ -51,10 +51,8 @@ function App() {
           {posts.map(post => {
             return (
               <Post
-                key={post.key}
-                author={post.author}
-                content={post.content}
-                publishedAt={post.publishedAt}
+                key={post.id}
+                post={post}
               />
             )
           })}
