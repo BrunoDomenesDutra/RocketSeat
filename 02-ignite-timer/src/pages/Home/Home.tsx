@@ -16,7 +16,7 @@ import { CycleContext } from '../../context/NewCycleContext';
         usar com ORMs como o PRISMA */
 const newCycleFormValidationSchema = zod.object({
     task: zod.string().min(1, 'Informe a tarefa'), // validando string que tenho no minimo 1 caractere
-    minutesAmount: zod.number().min(5, 'Minimo 5min').max(60, 'Maximo 60min'), // validando um number, min 5 min e max de 60min
+    minutesAmount: zod.number().min(1, 'Minimo 5min').max(60, 'Maximo 60min'), // validando um number, min 5 min e max de 60min
 })
 
 type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema> // O Zod está extraindo a tipagem do formulário a partir do Schema acima
@@ -25,7 +25,7 @@ type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema> // O Zod 
 
 export function Home() {
 
-const { createNewCycle, interrupeCurrentCycle, activeCycle} = useContext(CycleContext)
+    const { createNewCycle, interrupeCurrentCycle, activeCycle } = useContext(CycleContext)
 
     /* 'register' etc, são funções do useForm. O 'register' é um metodo que adiciona um input ao formulario.
      o register indica quais campos estarão no formulário */
@@ -59,9 +59,6 @@ const { createNewCycle, interrupeCurrentCycle, activeCycle} = useContext(CycleCo
                     <NewCycleForm />
                 </FormProvider>
                 <Countdown />
-
-
-
 
                 {activeCycle ? (
                     <StopCountdownButton onClick={interrupeCurrentCycle} type='button'>

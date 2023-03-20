@@ -29,7 +29,7 @@ export function NewCycleForm() {
                 id='minutesAmount'
                 placeholder='00'
                 step={5}
-                min={5}
+                min={1}
                 max={60}
                 {...register('minutesAmount', { valueAsNumber: true })} // o 'valueAsnumber' serve para passar o minutesAmount como um 'number' dentro do data
             />
