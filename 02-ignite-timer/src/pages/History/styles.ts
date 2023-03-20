@@ -15,6 +15,7 @@ export const HistoryContainer = styled.main`
 
 `
 
+
 export const HistoryList = styled.div`
 
     flex: 1;
@@ -55,6 +56,8 @@ export const HistoryList = styled.div`
     }
 
 `
+
+
 const STATUS_COLORS = {
     yellow: 'yellow-500',
     green: 'green-500',
