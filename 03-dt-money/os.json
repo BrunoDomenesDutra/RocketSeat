@@ -1,0 +1,23 @@
+{
+    "serviceorders": [
+        {
+            "id": 1,
+            "type:": "Serviço Especializadosde Consultoria Técnica",
+            "contract": 57300,
+            "os": {
+                "osType": 9, 
+                "osNumber": 2
+            },
+            "services": [
+                {
+                    "description": "Serviço de consultoria técnica conforme descrito abaixo",
+                    "relationalResource": "Lorem ipsum",
+                    "ust": 5,
+                    "startDate": "2022-05-05",
+                    "finishDate": "2022-05-06"
+                }
+            ],
+            "generalDescription": "Serviço"       
+        }
+    ]
+}
