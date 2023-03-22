@@ -7,7 +7,7 @@ export function Summary() {
 
     const summary = useSummary();
 
-    console.log(summary);
+    //console.log(summary);
 
     return (
         <SummaryContainer>

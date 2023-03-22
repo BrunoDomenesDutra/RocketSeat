@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useContextSelector } from "use-context-selector";
 import { Header } from "../../components/Header/Header";
 import { Summary } from "../../components/Summary/Summary";
 import { TransactionsContext } from "../../contexts/TransactionsContext";
@@ -17,7 +18,9 @@ interface Transaction {
 
 export function Transactions() {
 
-    const {transactions} = useContext(TransactionsContext)
+    const transactions = useContextSelector(TransactionsContext, (context) => {
+        return context.transactions;
+    })
 
 
 
