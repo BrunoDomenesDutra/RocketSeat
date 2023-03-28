@@ -7,6 +7,7 @@ import c1 from '../assets/img/Shirt/01.png'
 import c2 from '../assets/img/Shirt/02.png'
 import c3 from '../assets/img/Shirt/03.png'
 import { useEffect, useState } from "react";
+import { stripe } from "../lib/stripe";
 
 export default function Home() {
 
@@ -65,4 +66,15 @@ export default function Home() {
       </Product>
     </HomeContainer>
   )
+}
+
+export const getServerSideProps = async() => {
+  const response = await stripe.products.list()
+
+  return {
+    props: {
+      list: [1,2,3]
+    }
+  }
+  
 }
