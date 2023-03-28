@@ -68,7 +68,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
                 createdAt: new Date(),
             })
 
-            setTransactions(state => [response.data, ...transactions])
+            setTransactions(state => [response.data, ...state])
         }, [fetchTransactions]
     )
 
