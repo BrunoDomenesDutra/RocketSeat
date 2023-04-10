@@ -1,0 +1,8 @@
+# 1
+Aqui estou chamando a 'api' que está em '@/lib/axios' e utilizando o método
+'POST' pois iremos criar um usuário. Indicamos qual a tabela do banco iremos
+utilizar, que nesse caso é o 'users' e depois especificamos quais dados do
+'data' iremos utilizar. Poderia passar o data completo, mas desconstruí-la
+fica mais fácil de dar manutenção posteriormente.
+
+# 2 - Catch Error

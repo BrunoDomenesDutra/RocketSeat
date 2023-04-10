@@ -1,0 +1,16 @@
+# 1 - Check if the request is a POST
+Rotas backend no Next aceita todos os métodos, por este motivo
+devemos limitar as rotas utilizando 'if'. Neste caso estou limitando a rota
+a aceitar apenas se o método for 'POST' ao informar que se qualquer método
+chamado for diferente de 'POST' ele vai dar um erro 405 que quer dizer que
+'não é permitido'
+
+# 2 - Set a cookie
+Utilizamos o cookie do 'nookie' para guardar informação da pessoa que está
+fazendo o cadastro na nossa aplicação. As infos vão vir da nossa 'res', 
+pois é nele que podemos botar um 'header' pra enviar um cookie.
+Depois damos um nome, normalmente utiliando o nome do app e qual dado ele
+irá guardar. Neste caso vamos guardar o 'user.id' que será gerado assim que
+o usuário for criado em nosso BD. Os cookies são categorizados por rotas,
+podemos salvar para uma rota especifica, ou neste caso, na rota global que
+vai ser utilizada em todas as rotas.

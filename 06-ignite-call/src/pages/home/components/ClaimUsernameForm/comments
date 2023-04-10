@@ -1,0 +1,40 @@
+# useForm()
+hook para pegar dados que vem de um formulário
+https://react-hook-form.com/api/useform/
+
+## register
+é uma variável onde estarão todos os dados de um formulário
+
+## handleSubmit
+função para passar os dados do formulário para o 'register'
+
+## setValue
+serve para setar de forma programática/manual algum valor dentro do formulário
+no 'useForm()'
+
+## formState: {erros}
+função utilizada para pegar as mensagens de erros que forem definidas
+na validação do 'claimUsernameFormSchema'
+
+-------------------------------------------------------------------------------
+
+# handleClaimUsername
+função que irá receber os dados do 'handleSubmit'
+
+# claimUsernameFormSchema
+definição de um schema para validação com o Zod,
+nele você irá colocar todos os campos que existem dentro do formulário
+e junto alguns parametros de validação como min e max de caracteres,
+usar Regex, etc
+https://zod.dev/
+
+# ClaimUsernameFormData
+estamos criando uma tipagem a partir do 'claimUsernameFormSchema'.
+Isso faz com que toda vez que alterarmos o Schema do Zod,
+a tipagem mude junto, eliminando assim repetição de código.
+Ele é utilizado como tipagem genérica no 'useForm' para sabermos
+quais campos o register poderá conter e também no 'data'
+
+# resolver: zodResolver
+Utilizado dentro do useForm para validação dos dados que irão vir
+do formulário

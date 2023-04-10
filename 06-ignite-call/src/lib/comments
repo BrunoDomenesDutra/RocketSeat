@@ -1,0 +1,3 @@
+# log: ['query']
+o prisma vai fazer o log de todos SQL executados no BD, todas as queries
+dentro do nosso terminal. A fim de debug
