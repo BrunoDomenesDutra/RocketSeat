@@ -1,0 +1,4 @@
+# 1 - getUserByAccount
+Como o método é 'get USER by account' precisamos buscar o
+usuário, por isso adicionamos o 'include user true', desta forma
+ele trás o user junto com a account. E na declaração da const, ao invés de colocarmos o 'account' desconstruimos o 'user'

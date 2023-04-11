@@ -1,0 +1,6 @@
+# Google oAuth
+GOOGLE_CLIENT_ID=565545510909-jf7cause5ps6ffq1vep4thcqpnrndcth.apps.googleusercontent.com
+GOOGLE_CLIENT_SC=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
+
+# Next Secret
+NEXTAUTH_SECRET=8K4qYcEOZUHpEUrHgpjtlTVjNqfXBObL2wUeXmNX7b4
