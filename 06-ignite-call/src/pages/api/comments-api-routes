@@ -1,0 +1,10 @@
+API Routes são formas de termos rotas backend dentro do front-end do nosso
+app.
+
+Cada página que temos dentro do página 'pages' é convertido em uma rota
+para a nossa aplicação. Por consequencia, todas as paginas dentro da pasta
+'api' também serão convertidas, seguindo a configuração que fizemos no arquivo
+next.config.
+
+
+

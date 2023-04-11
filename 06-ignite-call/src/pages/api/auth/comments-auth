@@ -1,0 +1,13 @@
+# 1 - Callbacks
+Há uma chance de o usuário não nos dar acesso ao calendar, então temos que
+ter uma forma de lidar com esse tipo de erro. Para isso utilizamos callbacks
+do Next Auth. Callbacks são funções que são chamadas em momentos oportunos
+do processo de autenticação.
+
+# 2 - SignIn
+Uma função que é chamada automaticamente assim que a autenticação é feita.
+Aqui iremos pegar informações da 'account' para verificar em seu 'scope' se
+o usuário nos liberou acesso ao Caldendar. Se não tiver, retornamos um erro.
+Pode-se fazer uma página especifica para mostrar o erro, mas neste caso apenas
+passamos num 'query param' na url o 'error=permissions'. Esse 'return', o 'signIn'
+vai saber para onde redirecionar (qual página no caso) o usuário. Caso o acesso for dado, o codigo continua.
