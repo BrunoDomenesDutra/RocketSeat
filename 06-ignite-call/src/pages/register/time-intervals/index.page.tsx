@@ -8,6 +8,7 @@ import {
 } from '@ignite-ui/react'
 import { Container, Header } from '../styles'
 import {
+  FormError,
   IntervalBox,
   IntervalDay,
   IntervalItem,
@@ -18,8 +19,26 @@ import { ArrowRight } from 'phosphor-react'
 import { z } from 'zod'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { getWeekDays } from '@/utils/get-week-days'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-const timeInvervalsFormSchema = z.object({})
+const timeInvervalsFormSchema = z.object({
+  intervals: z
+    .array(
+      z.object({
+        weekDay: z.number().min(0).max(6),
+        enabled: z.boolean(),
+        startTime: z.string(),
+        endTime: z.string(),
+      }),
+    )
+    .length(7)
+    .transform((intervals) => intervals.filter((interval) => interval.enabled))
+    .refine((intervals) => intervals.length > 0, {
+      message: 'Selecione pelo menos um dia da semana',
+    }),
+})
+
+type TimeInvervalsFormData = z.infer<typeof timeInvervalsFormSchema>
 
 export default function TimeIntervals() {
   const {
@@ -29,6 +48,7 @@ export default function TimeIntervals() {
     watch,
     formState: { isSubmitting, errors },
   } = useForm({
+    resolver: zodResolver(timeInvervalsFormSchema),
     defaultValues: {
       intervals: [
         { weekDay: 0, enabled: false, startTime: '08:00', endTime: '18:00' },
@@ -51,7 +71,9 @@ export default function TimeIntervals() {
 
   const intervals = watch('intervals')
 
-  async function handleTimeIntervals() {}
+  async function handleTimeIntervals(data: TimeInvervalsFormData) {
+    console.log(data)
+  }
 
   return (
     <Container>
@@ -106,7 +128,11 @@ export default function TimeIntervals() {
           })}
         </IntervalsContainer>
 
-        <Button type="submit">
+        {errors.intervals && (
+          <FormError size="sm">{errors.intervals.message}</FormError>
+        )}
+
+        <Button type="submit" disabled={isSubmitting}>
           Próximo Passo <ArrowRight />
         </Button>
       </IntervalBox>
